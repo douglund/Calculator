@@ -1,0 +1,18 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Calculator.ViewModel;assembly=Calculator"
+        xmlns:windowsWpf="clr-namespace:Calculator.WindowsWPF"
+        x:Class="Calculator.WindowsWPF.MainWindow"
+        WindowStartupLocation="CenterScreen" mc:Ignorable="d"
+        Title="Calculator" Height="450" Width="320"  MinHeight="450" MinWidth="320"  d:DataContext="{d:DesignInstance {x:Type vm:CalculatorViewModel}}" Icon="Assets/Calculator.png">
+
+    <GroupBox Margin="5" Padding="5">
+        <GroupBox.Content>
+            <windowsWpf:CalculatorControl/>
+        </GroupBox.Content>
+    </GroupBox>
+
+</Window>

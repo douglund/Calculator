@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="OrderWise.Calculator.Presentation.WinApp.Wpf.CalculatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OrderWise.Calculator.Presentation.WinApp.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="360">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}" />        
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid x:Name="CalculatorGrid" HorizontalAlignment="Right" Height="392" VerticalAlignment="Bottom" Width="356.096">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" MinHeight="190" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="OperationsText" Margin="2" TextWrapping="NoWrap" TextAlignment="Right" Grid.Row="0" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Stretch" Text="{Binding HistoryString}" FontFamily="Courier New" FontSize="12"
+                    IsReadOnlyCaretVisible="True" IsReadOnly="True" BorderThickness="0" />
+
+                <Image Source="{StaticResource WarningImage}" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="1" Grid.Column="0"
+                    MaxHeight="32" VerticalAlignment="Center" ToolTip="{Binding Alert.Message}" Visibility="{Binding Alert.Visibility}" />
+
+                <TextBox x:Name="ResultText" Margin="5,5,0,5" TextWrapping="WrapWithOverflow" TextAlignment="Right" FlowDirection="LeftToRight"
+                    Text="{Binding InputText, Mode=OneWay, StringFormat=\{0:## ##0.###\}}" FontSize="32" Grid.Row="1" Grid.Column="0"
+                    IsReadOnlyCaretVisible="True" IsReadOnly="True" FontWeight="Normal" />
+
+                <Button Content="⌫" Background="WhiteSmoke" Command="{Binding ChooseBackspaceCommand}" Margin="5,5,5,5"
+                    Grid.Row="1" Grid.Column="1" Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" ToolTip="Backspace" />
+
+            </Grid>
+
+            <UniformGrid Grid.Row="1" Margin="2" Rows="5" Columns="4">
+
+                <!-- row 0 -->
+                <!--<Button Content="(" Command="{Binding ChooseSymbolCommand}" CommandParameter="(" />
+                <Button Content=")" Command="{Binding ChooseSymbolCommand}" CommandParameter=")" />-->
+
+                <Button Content="M+" Command="{Binding ChooseMemoryPlusCommand}" />
+                <Button Content="MR" Command="{Binding ChooseMemoryRecallCommand}" />
+                <Button Content="C" Command="{Binding ChooseClearCommand}" />
+                <Button Content="CE" Command="{Binding ChooseClearEntryCommand}" IsCancel="True" />
+
+                <!-- row 1 -->
+                <Button Content="7" Command="{Binding ChooseDigitCommand}" CommandParameter="7" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="8" Command="{Binding ChooseDigitCommand}" CommandParameter="8" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="9" Command="{Binding ChooseDigitCommand}" CommandParameter="9" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="÷" Command="{Binding ChooseSymbolCommand}" CommandParameter="/" />
+
+                <!-- row 2 -->
+                <Button Content="4" Command="{Binding ChooseDigitCommand}" CommandParameter="4" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="5" Command="{Binding ChooseDigitCommand}" CommandParameter="5" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="6" Command="{Binding ChooseDigitCommand}" CommandParameter="6" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="×" Command="{Binding ChooseSymbolCommand}" CommandParameter="*" />
+
+                <!-- row 3 -->
+                <Button Content="1" Command="{Binding ChooseDigitCommand}" CommandParameter="1" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="2" Command="{Binding ChooseDigitCommand}" CommandParameter="2" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="3" Command="{Binding ChooseDigitCommand}" CommandParameter="3" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="+" Command="{Binding ChooseSymbolCommand}" CommandParameter="+" />
+
+                <!-- row 4 -->
+                <Button Content="0" Command="{Binding ChooseDigitCommand}" CommandParameter="0" Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="." Command="{Binding ChooseDigitCommand}" CommandParameter="." Style="{StaticResource DigitButtonStyle}" />
+                <Button Content="=" Command="{Binding ChooseEqualCommand}" CommandParameter="=" Style="{StaticResource EqualButtonStyle}" IsDefault="True" />
+                <Button Content="-" Command="{Binding ChooseSymbolCommand}" CommandParameter="-" />
+            </UniformGrid>
+
+            <!--<StatusBar Grid.Row="2">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate />
+                </StatusBar.ItemsPanel>
+            </StatusBar>-->
+
+        </Grid>
+
+    </Grid>
+</UserControl>

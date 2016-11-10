@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:OrderWise.Calculator.Presentation.CommonXaml.ViewModel;assembly=Presentation.CommonXaml"
+             x:Class="OrderWise.Calculator.Presentation.CommonXaml.View.CalculatorPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ffa500" />
+                <Setter Property="BorderRadius" Value="20" />
+            </Style>
+
+            <Style x:Key="BaseStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Silver" />
+                <Setter Property="BorderRadius" Value="20" />
+            </Style>
+
+            <Style TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="BorderColor" Value="Yellow" />
+                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.BindingContext>
+            <viewModels:CalculatorViewModel />
+        </Grid.BindingContext>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="PreviousResultLabel" Text="{Binding HistoryString}"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+               HorizontalTextAlignment="End" />
+
+        <Label x:Name="ResultLabel" Text="{Binding InputText}" FontSize="40"
+               HorizontalOptions="EndAndExpand"
+               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" />
+
+        <Button Text="C" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                Command="{Binding ChooseClearCommand}" />
+        <Button Text="/" Grid.Row="2" Grid.Column="3"
+                Command="{Binding ChooseSymbolCommand}" CommandParameter="/"
+                Style="{StaticResource ButtonStyle}" />
+
+        <Button Text="7" Grid.Row="3" Grid.Column="0"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="7" />
+        <Button Text="8" Grid.Row="3" Grid.Column="1"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="8" />
+        <Button Text="9" Grid.Row="3" Grid.Column="2"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="9" />
+        <Button Text="x" Grid.Row="3" Grid.Column="3"
+                Command="{Binding ChooseSymbolCommand}" CommandParameter="x"
+                Style="{StaticResource ButtonStyle}" />
+
+        <Button Text="4" Grid.Row="4" Grid.Column="0"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="4" />
+        <Button Text="5" Grid.Row="4" Grid.Column="1"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="5" />
+        <Button Text="6" Grid.Row="4" Grid.Column="2"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="6" />
+        <Button Text="-" Grid.Row="4" Grid.Column="3"
+                Command="{Binding ChooseSymbolCommand}" CommandParameter="-"
+                Style="{StaticResource ButtonStyle}" />
+
+        <Button Text="1" Grid.Row="5" Grid.Column="0"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="1" />
+        <Button Text="2" Grid.Row="5" Grid.Column="1"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="2" />
+        <Button Text="3" Grid.Row="5" Grid.Column="2"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="3" />
+        <Button Text="+" Grid.Row="5" Grid.Column="3"
+                Command="{Binding ChooseSymbolCommand}" CommandParameter="+"
+                Style="{StaticResource ButtonStyle}" />
+
+        <Button Text="0" Grid.Row="6" Grid.Column="0"
+                Grid.ColumnSpan="2" Command="{Binding ChooseDigitCommand}" CommandParameter="0" />
+        <Button Text="." Grid.Row="6" Grid.Column="2"
+                Command="{Binding ChooseDigitCommand}" CommandParameter="." />
+        <Button Text="=" Grid.Row="6" Grid.Column="3"
+                Command="{Binding ChooseEqualCommand}" CommandParameter="="
+                Style="{StaticResource ButtonStyle}" />
+    </Grid>
+</ContentPage>
