@@ -4,7 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Calculator.View.CalculatorView"
              xmlns:viewModel="clr-namespace:Calculator.ViewModel;assembly=Calculator"
-             BindingContext="{x:DynamicResource viewModel:CalculatorViewModel}">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             MinimumHeightRequest="300" MinimumWidthRequest="200" HeightRequest="400" WidthRequest="300"  >
 
   <ContentPage.Resources>
     
@@ -18,20 +19,22 @@
         <Setter Property="FontAttributes" Value="None" />
       </Style>
 
-      <Style x:Key="EqualButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+      <Style x:Key="EqualButtonStyle" TargetType="Button" BaseResourceKey="BaseButtonStyle" >
         <Setter Property="BackgroundColor" Value="Blue" />
       </Style>
 
-      <Style x:Key="DigitButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+      <Style x:Key="DigitButtonStyle" TargetType="Button" BaseResourceKey="BaseButtonStyle" >
         <Setter Property="BackgroundColor" Value="Gray" />
         <Setter Property="FontAttributes" Value="Bold" />
       </Style>
+      
+      <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}" />
 
     </ResourceDictionary>
     
   </ContentPage.Resources>
   
-  <Grid x:Name="CalculatorGrid" HorizontalOptions="Fill" VerticalOptions="Fill" >
+  <Grid x:Name="CalculatorGrid" HorizontalOptions="Fill" VerticalOptions="Fill" Padding="5" >
     
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
@@ -48,9 +51,9 @@
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
 
-      <Entry x:Name="OperationsText" HorizontalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Text="{Binding HistoryString}" FontFamily="Courier New" FontSize="12" IsEnabled="True" />
+      <Entry x:Name="OperationsText" HorizontalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Text="{Binding HistoryString}" FontFamily="Courier New" FontSize="24" IsEnabled="True" />
       <Image Source="../Assets/Warning.png" HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" IsVisible="{Binding Alert.Visibility}" />
-      <Entry x:Name="ResultText" HorizontalTextAlignment="End" Text="{Binding InputText, Mode=OneWay, StringFormat=\{0:## ##0.###\}}" FontSize="32" Grid.Row="1" Grid.Column="0" IsEnabled="False" FontAttributes="Bold" />
+      <Entry x:Name="ResultText" HorizontalTextAlignment="End" Text="{Binding InputText, Mode=OneWay, StringFormat=\{0:## ##0.###\}}" FontSize="32" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" />
       <Button Text="⌫" Command="{Binding ChooseBackspaceCommand}" Grid.Row="1" Grid.Column="1" />
 
     </Grid>
@@ -72,9 +75,6 @@
       </Grid.ColumnDefinitions>
 
       <!-- row 0 -->
-      <!--<Button Text="(" Command="{Binding ChooseSymbolCommand}" CommandParameter="(" />
-                <Button Text=")" Command="{Binding ChooseSymbolCommand}" CommandParameter=")" />-->
-
       <Button Text="M+" Command="{Binding ChooseMemoryPlusCommand}" Grid.Column="0" Grid.Row="0" />
       <Button Text="MR" Command="{Binding ChooseMemoryRecallCommand}" Grid.Column="1" Grid.Row="0" />
       <Button Text="C" Command="{Binding ChooseClearCommand}" Grid.Column="2" Grid.Row="0" />
@@ -95,8 +95,8 @@
       <!-- row 3 -->
       <Button Text="1" Command="{Binding ChooseDigitCommand}" CommandParameter="1" Style="{StaticResource DigitButtonStyle}" Grid.Column="0" Grid.Row="3" />
       <Button Text="2" Command="{Binding ChooseDigitCommand}" CommandParameter="2" Style="{StaticResource DigitButtonStyle}" Grid.Column="1" Grid.Row="3" />
-      <Button Text="3" Command="{Binding ChooseDigitCommand}" CommandParameter="3" Style="{StaticResource DigitButtonStyle}" Grid.Column="1" Grid.Row="3" />
-      <Button Text="+" Command="{Binding ChooseSymbolCommand}" CommandParameter="+" Grid.Column="0" Grid.Row="3" />
+      <Button Text="3" Command="{Binding ChooseDigitCommand}" CommandParameter="3" Style="{StaticResource DigitButtonStyle}" Grid.Column="2" Grid.Row="3" />
+      <Button Text="+" Command="{Binding ChooseSymbolCommand}" CommandParameter="+" Grid.Column="3" Grid.Row="3" />
 
       <!-- row 4 -->
       <Button Text="0" Command="{Binding ChooseDigitCommand}" CommandParameter="0" Style="{StaticResource DigitButtonStyle}" Grid.Column="0" Grid.Row="4" />

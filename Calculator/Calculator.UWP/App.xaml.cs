@@ -14,7 +14,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Calculator.Shared.Bootstrap;
 using Microsoft.Practices.Unity;
 
 namespace Calculator.UWP
@@ -58,9 +57,7 @@ namespace Calculator.UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
                 Xamarin.Forms.Forms.Init(e);
-
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application

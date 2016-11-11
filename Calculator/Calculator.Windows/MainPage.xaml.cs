@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Calculator.Shared.Bootstrap;
 using Microsoft.Practices.Unity;
 
 namespace Calculator.Windows
@@ -22,10 +21,7 @@ namespace Calculator.Windows
         public MainPage()
         {
             this.InitializeComponent();
-
-            var container = Container.Current;
-            var app = container.Resolve<Calculator.App>();
-            LoadApplication(app);
+            LoadApplication(new Calculator.App());
         }
     }
 }

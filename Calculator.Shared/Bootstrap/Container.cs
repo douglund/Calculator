@@ -1,7 +1,6 @@
-﻿using Microsoft.Practices.Unity;
-using OrderWise.Calculator.Application.Core;
+﻿using Calculator.Services;
+using Microsoft.Practices.Unity;
 using Calculator.ViewModel;
-using OrderWise.Calculator.Application.Services;
 
 namespace Calculator.Shared.Bootstrap
 {

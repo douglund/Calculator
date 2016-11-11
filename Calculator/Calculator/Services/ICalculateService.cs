@@ -1,4 +1,4 @@
-﻿namespace OrderWise.Calculator.Application.Core
+﻿namespace Calculator.Services
 {
     /// <summary>
     /// Calculates a result by symbol choice.
@@ -15,8 +15,12 @@
         /// <summary>
         /// Calculates a result between operands when symbol chosen.
         /// </summary>
-        /// <param name="expression">math expression to evaluate.</param>
-        /// <returns>Result of the last operation.</returns>
-        double Evaluate(string expression);
+        /// <param name="actualValue">The actual value.</param>
+        /// <param name="operationSymbol">The operation symbol.</param>
+        /// <param name="inputString">The input string.</param>
+        /// <returns>
+        /// Result of the last operation.
+        /// </returns>
+        double Evaluate(double actualValue, char operationSymbol, string inputString);
     }
 }

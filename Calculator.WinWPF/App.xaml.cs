@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Navigation;
-using Calculator.Shared.Bootstrap;
 using Microsoft.Practices.Unity;
 
 namespace Calculator.WindowsWPF
@@ -12,8 +11,7 @@ namespace Calculator.WindowsWPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var container = Container.Current;
-            var mainWindow = container.Resolve<MainWindow>();
+            var mainWindow = new MainWindow();
             mainWindow.Show();
         }
 

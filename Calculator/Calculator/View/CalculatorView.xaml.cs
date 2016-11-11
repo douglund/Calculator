@@ -8,9 +8,9 @@ namespace Calculator.View
         public CalculatorView()
         {
             InitializeComponent();
+            ViewModel = new CalculatorViewModel();
         }
-
-        [Microsoft.Practices.Unity.Dependency]
+        
         public CalculatorViewModel ViewModel
         {
             get { return BindingContext as CalculatorViewModel; }

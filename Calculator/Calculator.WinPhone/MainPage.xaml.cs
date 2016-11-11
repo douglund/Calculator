@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Calculator.Shared.Bootstrap;
+
 using Microsoft.Practices.Unity;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -29,10 +29,7 @@ namespace Calculator.WinPhone
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
-
-            var container = Container.Current;
-            var app = container.Resolve<Calculator.App>();
-            LoadApplication(app);
+            LoadApplication(new Calculator.App());
         }
 
         /// <summary>

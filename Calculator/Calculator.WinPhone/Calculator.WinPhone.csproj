@@ -113,10 +113,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Application.Core\Application.Core.csproj">
-      <Project>{745c4846-c426-4df4-9475-3dd6c2382413}</Project>
-      <Name>Application.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Calculator\Calculator.csproj">
       <Name>Calculator</Name>
     </ProjectReference>
@@ -154,7 +150,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\..\Calculator.Shared\Calculator.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -4,7 +4,7 @@ using System;
 using System.Globalization;
 using System.Windows.Input;
 using Calculator.Model;
-using OrderWise.Calculator.Application.Core;
+using Calculator.Services;
 using Xamarin.Forms;
 
 namespace Calculator.ViewModel
@@ -27,6 +27,8 @@ namespace Calculator.ViewModel
         /// </summary>
         public CalculatorViewModel()
         {
+            CalculateService = new CalculateService();
+
             ChooseDigitCommand = new Command<string>(OnDigitChosen());
             ChooseSymbolCommand = new Command<string>(OnSymbolChosen());
             ChooseEqualCommand = new Command<string>(OnEqualsChosen());
@@ -35,6 +37,7 @@ namespace Calculator.ViewModel
             ChooseBackspaceCommand = new Command(OnBackspaceChosen());
             ChooseMemoryPlusCommand = new Command(OnMemoryPlusChosen());
             ChooseMemoryRecallCommand = new Command(OnMemoryRecallChosen());
+            
             OnClearChosen();
         }
 
@@ -44,7 +47,7 @@ namespace Calculator.ViewModel
         /// <value>
         /// The calculate service.
         /// </value>
-        [Microsoft.Practices.Unity.Dependency]
+        // [Microsoft.Practices.Unity.Dependency]
         public ICalculateService CalculateService { get; set; }
 
         public ICommand ChooseDigitCommand { get; }
@@ -212,7 +215,7 @@ namespace Calculator.ViewModel
             try
             {
                 ClearAlert();
-                PreviousValue = CalculateService.Evaluate(HistoryString);
+                PreviousValue = CalculateService.Evaluate(PreviousValue, PreviousSymbol, InputString );
             }
             catch (DivideByZeroException)
             {
