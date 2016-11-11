@@ -12,6 +12,8 @@ namespace Calculator.WindowsWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            ViewModel = new CalculatorViewModel();
         }
 
         [Dependency]
